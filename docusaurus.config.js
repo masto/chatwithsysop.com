@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CHAT WITH SYSOP',
-  tagline: 'hey',
+  tagline: 'a blog about stuff',
   url: 'https://chatwithsysop.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -57,10 +57,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'CHAT WITH SYSOP',
+        title: 'CWS',
         logo: {
-          alt: 'Placeholder Logo',
-          src: 'img/logo.svg',
+          alt: 'CWS Logo',
+          src: 'img/cws-logo.svg',
         },
         items: [
           {

@@ -27,3 +27,7 @@
   --ifm-color-primary-lighter: #c2d7ea;
   --ifm-color-primary-lightest: #ebf2f8;
 }
+
+.hero--primary {
+  --ifm-hero-text-color: #ebf2f8;
+}
