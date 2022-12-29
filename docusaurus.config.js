@@ -59,15 +59,15 @@ const config = {
       navbar: {
         title: 'CHAT WITH SYSOP',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Placeholder Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'projects',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Projects',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
         ],
@@ -76,17 +76,16 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Social',
+            title: 'Links',
             items: [
               {
                 label: 'Mastodon',
                 href: 'https://masto.masto.com/@masto',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/@ChrisMasto',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/masto',
