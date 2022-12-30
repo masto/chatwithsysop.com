@@ -18,7 +18,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #99bcdb;
   --ifm-color-primary-dark: #7eaad1;
   --ifm-color-primary-darker: #70a1cc;
@@ -30,4 +30,13 @@
 
 .hero--primary {
   --ifm-hero-text-color: #ebf2f8;
+}
+
+/**
+  * Put the "Read More" link on the left. This is kind of horrifying, but
+  * Docusaurus hard codes things in a way that makes them awfully hard to
+  * override.
+  */
+.plugin-blog footer .text--right:has(a) {
+  text-align: left;
 }
