@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CHAT WITH SYSOP',
-  tagline: 'a blog about stuff',
+  tagline: 'a site about stuff',
   url: 'https://chatwithsysop.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -39,20 +39,25 @@ const config = {
           // editUrl:
           //   'https://github.com/masto/chatwithsysop.com/tree/main/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/masto/chatwithsysop.com/tree/main/',
-        },
+        // Disable the built-in blog plugin: we're using our own below
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
   ],
-
+  plugins: [
+    [
+      "./plugins/blog-plugin",
+      {
+        id: "blog",
+        routeBasePath: "blog",
+        path: "./blog",
+        showReadingTime: true,
+      },
+    ]
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
