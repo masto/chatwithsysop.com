@@ -27,6 +27,17 @@ const config = {
     locales: ['en'],
   },
 
+  headTags: [
+    {
+      // Mastodon verification
+      tagName: 'link',
+      attributes: {
+        rel: 'me',
+        href: 'https://masto.masto.com/@masto'
+      },
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -47,6 +58,7 @@ const config = {
       }),
     ],
   ],
+
   plugins: [
     [
       "./plugins/blog-plugin",
@@ -58,6 +70,7 @@ const config = {
       },
     ]
   ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
