@@ -82,14 +82,16 @@ tools to deploy manually. I'm not averse to pushing through GitHub.
 > collaborate and deploy websites.
 
 I know what some of those words mean. What is a JAMstack? Ok:
-<https://jamstack.org>. "Jamstack is an architectural approach that decouples
-the web experience layer from data and business logic, improving flexibility,
-scalability, performance, and maintainability." Ok. I guess I'm out of date,
-this seems to be a trend from 2016. In my defense, working at Google quickly
-puts you out of touch with the outside world. Which is one reason I'm doing
-this project. I still don't know WTF a JAMstack is, though. Oh, funny. There's
-[jamstack.wtf](http://jamstack.wtf). At least that tells me it's "JavaScript,
-API, and Markup". How is this different from a single page application?
+[https://jamstack.org](https://jamstack.org). "Jamstack is an
+architectural approach that decouples the web experience layer from
+data and business logic, improving flexibility, scalability,
+performance, and maintainability." Ok. I guess I'm out of date, this
+seems to be a trend from 2016. In my defense, working at Google
+quickly puts you out of touch with the outside world. Which is one
+reason I'm doing this project. I still don't know WTF a JAMstack is,
+though. Oh, funny. There's [jamstack.wtf](http://jamstack.wtf). At
+least that tells me it's "JavaScript, API, and Markup". How is this
+different from a single page application?
 
 A little reading later: it's the kids coming up with a new way to refer
 to something like a hybrid between an SPA and a static site generator.
