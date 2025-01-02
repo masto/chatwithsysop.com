@@ -4,7 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from "@theme/Layout";
 import BlogPostItem from "@theme/BlogPostItem";
 import PaginatorNavLink from "@theme/PaginatorNavLink";
-import { BlogPostProvider } from "@docusaurus/theme-common/internal";
+import { BlogPostProvider } from "@docusaurus/plugin-content-blog/client";
 
 import styles from './styles.module.css';
 

@@ -1,4 +1,5 @@
 // Thanks: https://kgajera.com/blog/display-recent-blog-posts-on-home-page-with-docusaurus/
+// See alse: https://github.com/facebook/docusaurus/issues/4138#issuecomment-1703083513
 
 const blogPluginExports = require("@docusaurus/plugin-content-blog");
 
