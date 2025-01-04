@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "3.6.3",
+    "@docusaurus/plugin-content-blog": "3.6.3",
     "@docusaurus/preset-classic": "3.6.3",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
@@ -41,5 +42,5 @@
   "engines": {
     "node": ">=18.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
 }
