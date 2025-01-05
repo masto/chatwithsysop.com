@@ -31,12 +31,3 @@
 .hero--primary {
   --ifm-hero-text-color: #ebf2f8;
 }
-
-/**
-  * Put the "Read More" link on the left. This is kind of horrifying, but
-  * Docusaurus hard codes things in a way that makes them awfully hard to
-  * override.
-  */
-.plugin-blog footer .text--right:has(a) {
-  text-align: left;
-}

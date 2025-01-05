@@ -1,3 +1,9 @@
+/**
+ * To update:
+ *   pnpm run swizzle--typescript--eject @docusaurus/theme-classicBlogPostItem/Footer
+ * Then re-integrate the changes (moving the read more link to the right).
+ */
+
 import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
@@ -71,7 +77,7 @@ export default function BlogPostItemFooter(): ReactNode {
         )}
         {truncatedPost && (
           <div
-            className={clsx('col text--right', {
+            className={clsx('col text--left', {
               'col--3': tagsExists,
             })}>
             <ReadMoreLink blogPostTitle={title} to={metadata.permalink} />
