@@ -42,11 +42,28 @@ html[data-theme="dark"] {
   border-radius: 0 0 10% 10% / 0 0 2rem 2rem;
 }
 
-.hero--primary {
+.hero {
   --ifm-hero-text-color: #ebf2f8;
+  --ifm-hero-background-color: none;
 }
 
-.hero--primary .container {
+@media screen and (max-width: 1230px) {
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+}
+
+.hero .container {
   padding: 0 calc(var(--ifm-spacing-horizontal) + 2rem);
 }
 
