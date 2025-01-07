@@ -1,12 +1,10 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-import { themes as prismThemes } from "prism-react-renderer";
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "CHAT WITH SYSOP",
-  tagline: "a site about stuff",
+  title: "Chris Masto's Old Timey Webiola",
+  tagline: "a blog about stuff",
   url: "https://chatwithsysop.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -74,10 +72,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "CWS",
+        hideOnScroll: true,
+        title: "chrismasto.com",
         logo: {
-          alt: "CWS Logo",
-          src: "img/cws-logo.svg",
+          alt: "Webiola Logo",
+          src: "img/webiola-logo.png",
         },
         items: [
           {
@@ -112,14 +111,12 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Christopher Masto. Built with Docusaurus.`,
       },
-      prism: {
-        theme: prismThemes.lightCodeTheme,
-        darkTheme: prismThemes.darkCodeTheme,
-      },
       colorMode: {
+        // For now, I don't want to have to design everything twice, so
+        // there's just one color mode.
         defaultMode: "dark",
-        disableSwitch: false,
-        respectPrefersColorScheme: true,
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
     }),
 };

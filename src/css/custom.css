@@ -5,29 +5,56 @@
  */
 
 /* You can override the default Infima variables here. */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Rosarivo:ital@0;1&display=swap");
+
 :root {
-  --ifm-color-primary: #305988;
-  --ifm-color-primary-dark: #2b507a;
-  --ifm-color-primary-darker: #294c74;
-  --ifm-color-primary-darkest: #223e5f;
-  --ifm-color-primary-light: #356296;
-  --ifm-color-primary-lighter: #3a6ba3;
-  --ifm-color-primary-lightest: #4178b8;
+  --ifm-font-family-base: "Montserrat";
+  --ifm-heading-font-family: "Rosarivo";
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-navbar-height: 4rem;
+  --ifm-navbar-padding-horizontal: 4rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: #99bcdb;
-  --ifm-color-primary-dark: #7eaad1;
-  --ifm-color-primary-darker: #70a1cc;
-  --ifm-color-primary-darkest: #4786be;
-  --ifm-color-primary-light: #b4cee5;
-  --ifm-color-primary-lighter: #c2d7ea;
-  --ifm-color-primary-lightest: #ebf2f8;
+html[data-theme="dark"] {
+  --ifm-background-color: #6f3f21;
+  --ifm-background-surface-color: #4a2610;
+  --ifm-color-content: #fdfced;
+  --ifm-color-primary: #e8b602;
+  --ifm-color-primary-dark: #d1a402;
+  --ifm-color-primary-darker: #c59b02;
+  --ifm-color-primary-darkest: #a27f01;
+  --ifm-color-primary-light: #fdc705;
+  --ifm-color-primary-lighter: #fdc910;
+  --ifm-color-primary-lightest: #fdd133;
+  background-color: var(--ifm-background-surface-color);
+}
+
+#__docusaurus {
+  background-color: var(--ifm-background-color);
+}
+
+.navbar {
+  border-bottom: 1px solid var(--ifm-navbar-link-color);
+  border-radius: 0 0 10% 10% / 0 0 2rem 2rem;
 }
 
 .hero--primary {
   --ifm-hero-text-color: #ebf2f8;
+}
+
+.hero--primary .container {
+  padding: 0 calc(var(--ifm-spacing-horizontal) + 2rem);
+}
+
+.footer {
+  border-top: 1px solid var(--ifm-footer-title-color);
+  border-radius: 10% 10% 0 0 / 2.5rem 2.5rem 0 0;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #4a2610 !important;
 }
