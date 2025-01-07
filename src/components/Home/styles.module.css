@@ -19,6 +19,7 @@
 }
 @media screen and (max-width: 699px) {
   .heroBanner {
+    text-align: center;
     margin: 2rem 0 -3rem 0;
     padding: 2rem 0 0 0;
     border: 1px solid white;
