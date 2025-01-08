@@ -3,7 +3,7 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Chris Masto's Old Timey Webiola",
+  title: "Chris Masto's Electric Webiola",
   tagline: "a blog about stuff",
   url: "https://chatwithsysop.com",
   baseUrl: "/",
