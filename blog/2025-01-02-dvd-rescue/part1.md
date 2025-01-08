@@ -21,8 +21,7 @@ share it on this anniversary through luck and perseverance, despite having
 thought for a while that this footage had been lost forever.
 
 (If you're only interested in the technical details, you can skip the
-heartwarming backstory and go straight to
-[part 2](/2025-01-02-dvd-rescue/index.md).)
+heartwarming backstory and go straight to [part 2](./part2.md).)
 
 ## The Original Recording
 
