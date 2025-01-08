@@ -28,7 +28,11 @@ heartwarming backstory and go straight to [part 2](./part2.md).)
 In 1984, this was the state of the art camcorder. I don't mean that ironically -
 it was actually a high tech and fairly rare thing for the time.
 
-[insert photo of camcorder] [attribution]
+![Sony Betamovie camcorder](betamovie_wikipedia.jpg) <small>(By <a
+href="https://commons.wikimedia.org/wiki/User:David162se">David162se</a> on <a
+href="https://commons.wikimedia.org/wiki/File:Sony_Betamovie_BMC-100P_2nd_view_(retouched_filtered).jpg">WikiMedia</a>,
+<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" rel="license">CC
+BY-SA 4.0</a></small>)
 
 If the word "Betamax" doesn't mean anything to you, a very quick history lesson.
 In the 80s, there were two competing videotape formats: Sony's proprietary
@@ -76,6 +80,8 @@ production line in my kitchen where I put them in padded mailers and sent them
 out to my parents. Finally, I thought, these memories would be preserved forever
 in digital form.
 
+![A homemade DVD labeled Home Video #2 and listing various Christmas videos](xmas_dvd.jpg)
+
 The discs sat on shelves, in moving boxes, and in the backs of various cabinets
 for many years, until eventually I learned the unpleasant truth.
 
@@ -96,62 +102,9 @@ and clicking noises as it tried to find the faded track. It seemed hopeless.
 
 ## A Christmas Miracle
 
-While at our family holiday party, my sister mentioned that she had recently
-watched one of these home movies.
-
-And the rest of the story goes here.
-
-- Setting up system-rescue.org
-- Turning off the firewall and setting rootpass
-- copytoram and mounting the USB stick writable
-- realizing DVDs are over the FAT32 limit
-- mounting remote filesystem: mkdir /mnt/syn; mount -t cifs //synology/foo
-  /mnt/syn -o username=foo
-
-```yaml
----
-global:
-  copytoram: true
-  checksum: false
-  loadsrm: false
-  dostartx: false
-  dovnc: false
-  noautologin: false
-  nofirewall: true
-  setkmap: "dvorak"
-  rootpass: "xxx"
-
-autorun:
-  ar_disable: false
-  ar_nowait: true
-  ar_nodel: false
-  ar_attempts: 1
-  ar_ignorefail: false
-  ar_suffixes: "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-  exec:
-    100:
-      path: "mkdir"
-      parameters:
-        - "/mnt/usb"
-    200:
-      path: "mount"
-      parameters:
-        - "/dev/sdc1"
-        - "/mnt/usb"
-      wait: on_error
-
-sysconfig:
-  bash_history:
-    100: "mount /dev/sdc1 /mnt/usb"
-```
-
-Some commands to talk about:
-
-ddrescue -b 2048 -vv -nN --size 87228416 --cpass 1 /dev/rdisk6 dvd.iso
-rescue.log
-
-ddrescue -b 2048 -vv -nN -C --cpass 1 /dev/rdisk6 dvd.iso rescue.log
-
-ddrescue -b 2048 -vv -n -C --cpass 1 /dev/rdisk6 dvd.iso rescue.log
-
-On Linux: /dev/sr0
+While at a family holiday party, my sister mentioned that she had recently
+watched one of these home movies. Needless to say, I was surprised that she had
+a working copy of the DVDs, so I asked to borrow them in order to try to recover
+as much as possible. I went home with a box of discs and set to work copying
+them to my computer. As it turns out, this was a rather involved process, and
+that's where we pick up in [Part 2 of this story](./part2.md).
