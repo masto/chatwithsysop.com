@@ -37,48 +37,48 @@ BY-SA 4.0</a></small>)
 If the word "Betamax" doesn't mean anything to you, a very quick history lesson.
 In the 80s, there were two competing videotape formats: Sony's proprietary
 Betamax, and VHS - the standard used by everyone else. The general consensus is
-that Beta had better picture quality, but VHS ultimately won out and by 1988
+that Beta had better picture quality, but VHS ultimately won out, and by 1988
 Sony had given up.
 
 I probably inherited my predilection for gadgets from my father. Though he
 struggled with technology at times, he had a thing for having the latest thing.
-And so we ended up with collection of home movies recorded on Beta tapes. They
+And so we ended up with a collection of home movies recorded on Beta tapes. They
 go on for hours and hours, often with the camera set up on a tripod during a
 holiday, with everything too dark and out of focus. But they are the only
-recordings we have of that time and as happens, a lot of the people in them
+recordings we have of that time, and as happens, a lot of the people in them
 aren't around anymore. So I'd like to keep them safe.
 
 ## The First Conversion
 
-It was obvious by the early 1990s that our Betamax VCR broke down, we'd no
+It was obvious by the early 1990s that if our Betamax VCR broke down, we'd no
 longer be able to watch these videos, so it was time to copy them somewhere
 else. That somewhere was VHS. By this point, I had graduated to an
 [Amiga 500](https://en.wikipedia.org/wiki/Amiga_500), a computer that was known
 for its video capabilities, and my tendency to turn things into complicated
-projects was fully developed. So we gathered all of the tapes and set about
-dubbing them onto VHS tapes while adding introductory titles courtesy of my
+projects was fully developed. My father and I gathered all of the tapes and set
+about dubbing them onto VHS while adding introductory titles courtesy of my
 Amiga and some software I've long since forgotten the name of.
 
 This was of course a very analog and very lossy conversion. It just involved
-plugging some RCA cables between the two VCRs, pressing play on one, and record
-on the other. But it did succeed in producing a copy of the movies that could
-theoretically be watched into the future. Even in 2025, a VHS player wouldn't be
-hard to track down. In fact, I have one under the TV, but I say theoretically
-because those tapes (both Beta and VHS) have long since been lost. But all is
-not lost, because before that happened there was...
+plugging RCA cables between the two VCRs, pressing play on one, and record on
+the other. But it did succeed in producing a copy of the movies that could
+theoretically be watched into the future. Even in 2025, while a Betamax player
+would be hard to track down, VHS is kind of still around. In fact, I have one
+under the TV, but I say theoretically because I can't actually watch those
+tapes - they've long since disappeared. But all is not lost, because before that
+happened there was...
 
 ## Another Format Conversion
 
 Sometime around 2002, I found myself with a Windows PC (a story for another
-time) capable of capturing video and burning DVDs. Over the course of several
-months, I set myself to the project of once again converting all of the home
-movies, this time copying them from VHS and making DVDs with a program called
-Pinnacle Studio. I also put an inordinate amount of effort into making chapters,
-title screens, and labels for the discs. I even had an ink jet printer that
-could print directly onto the DVDs. I made extra copies and set up a little
-production line in my kitchen where I put them in padded mailers and sent them
-out to my parents. Finally, I thought, these memories would be preserved forever
-in digital form.
+time) capable of capturing video and burning DVDs. On and off over next few
+years, I went through the home movies and converted them once again, this time
+copying them from VHS and making DVDs with a program called Pinnacle Studio. I
+also put an inordinate amount of effort into making chapters, title screens, and
+labels for the discs. I even had an ink jet printer that could print directly
+onto the DVDs. I made extra copies and set up a little production line where I
+put them in padded mailers and sent them out to my parents. Finally, I thought,
+these memories would be preserved forever in digital form.
 
 ![A homemade DVD labeled Home Video #2 and listing various Christmas videos](xmas_dvd.jpg)
 
@@ -89,8 +89,8 @@ for many years, until eventually I learned the unpleasant truth.
 
 At some point, I tried to watch one of these DVDs and I found that it wouldn't
 play reliably. It wasn't the player, and it wasn't just the one disc. As it
-turns out, writable CDs and DVDs can fail in as little as 5 years. They contain
-a dye that is "burned" by the laser to write data, and over time the dye fades,
+turns out, writable CDs and DVDs can fail in as little as five years. The laser
+writes data by changing the color of a dye layer, and over time this dye fades,
 causing the disc to become unreadable. I had no idea that this would happen, and
 by that point the tapes were gone, as were the captures. Computer storage wasn't
 that big in 2002, so I couldn't keep the project files around after the DVDs
