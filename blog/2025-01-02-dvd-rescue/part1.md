@@ -51,34 +51,33 @@ aren't around anymore. So I'd like to keep them safe.
 ## The First Conversion
 
 It was obvious by the early 1990s that if our Betamax VCR broke down, we'd no
-longer be able to watch these videos, so it was time to copy them somewhere
-else. That somewhere was VHS. By this point, I had graduated to an
+longer be able to watch these videos, so it was time to copy them to VHS. By
+this point, I had graduated to an
 [Amiga 500](https://en.wikipedia.org/wiki/Amiga_500), a computer that was known
 for its video capabilities, and my tendency to turn things into complicated
 projects was fully developed. My father and I gathered all of the tapes and set
 about dubbing them onto VHS while adding introductory titles courtesy of my
 Amiga and some software I've long since forgotten the name of.
 
-This was of course a very analog and very lossy conversion. It just involved
-plugging RCA cables between the two VCRs, pressing play on one, and record on
-the other. But it did succeed in producing a copy of the movies that could
-theoretically be watched into the future. Even in 2025, while a Betamax player
-would be hard to track down, VHS is kind of still around. In fact, I have one
-under the TV, but I say theoretically because I can't actually watch those
-tapes - they've long since disappeared. But all is not lost, because before that
-happened there was...
+This was of course a very analog and lossy conversion that involved plugging RCA
+cables between the two VCRs, pressing play on one, and record on the other. But
+it did succeed in producing a copy of the movies that could theoretically be
+watched into the future. Even in 2025, while a Betamax player would be hard to
+track down, VHS is kind of still around. I have one under my TV, but I say
+theoretically because I can't actually watch those tapes - they've long since
+disappeared. But all is not lost, because before that happened there was...
 
-## Another Format Conversion
+## Another Conversion
 
-Sometime around 2002, I found myself with a Windows PC (a story for another
-time) capable of capturing video and burning DVDs. On and off over next few
-years, I went through the home movies and converted them once again, this time
-copying them from VHS and making DVDs with a program called Pinnacle Studio. I
-also put an inordinate amount of effort into making chapters, title screens, and
-labels for the discs. I even had an ink jet printer that could print directly
-onto the DVDs. I made extra copies and set up a little production line where I
-put them in padded mailers and sent them out to my parents. Finally, I thought,
-these memories would be preserved forever in digital form.
+By 2002, I found myself with a Windows PC (a story for another time) capable of
+capturing video and burning DVDs. Over the next few years, I went through the
+home movies and converted them once again, this time copying them from VHS and
+making DVDs with a program called Pinnacle Studio. I also put an inordinate
+amount of effort into making chapters, title screens, and labels for the discs.
+I even had an ink jet printer that could print directly onto the DVDs. I made
+extra copies and set up a little production line where I put them in padded
+mailers and sent them out to my parents. Finally, I thought, these memories
+would be preserved forever in digital form.
 
 ![A homemade DVD labeled Home Video #2 and listing various Christmas videos](xmas_dvd.jpg)
 
