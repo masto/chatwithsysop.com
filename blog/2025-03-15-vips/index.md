@@ -1,5 +1,5 @@
 ---
-title: A Most Interesting Bug
+title: A Fairly Interesting Bug
 authors: [masto]
 ---
 
@@ -30,11 +30,11 @@ got stuck on this together and ultimately puzzled it out.
 ## The requisite background
 
 I've been working on a web application that does some stuff with photos. The
-user uploads a photo from their device, and at one point I need to show it to
-them. I'm using [Next.js](https://nextjs.org/), which has a neat
+user uploads a photo from their device and I need to show it to them. I'm using
+[Next.js](https://nextjs.org/), which has a neat
 [image optimization feature](https://nextjs.org/docs/app/building-your-application/optimizing/images),
 so I thought I'd just use their `<Image>` component, but I quickly discovered
-that it doesn't do all the things I need, and in particular it
+that it doesn't do all the things I need. In particular it
 [doesn't support HEIC](https://github.com/vercel/next.js/discussions/30043).
 HEIC will be a recurring theme here: it's the format Apple is moving to for
 iPhone photos, and that's important to my app. Side note: you might see "HEIF"
@@ -45,40 +45,43 @@ pop up in debug logs, so the easiest thing to do is just consider them the same
 thing.
 
 Back to the problem at hand, I decided that a workaround for HEIC support would
-be to just convert everything to JPEG (at least for thumbnails). I looked at a
-few different options, and I settled on `vips`. It says on
-[the web site](https://libvips.org) that "Compared to similar libraries, libvips
-runs quickly and uses little memory", and that's good enough for me. I've used
-ImageMagick in the past, and it's a bit of a jumble. This seemed like maybe a
-clean, modern replacement. It took a little effort to interpret the
-documentation, but once I sorted out that I could run
-`vips thumbnail input.heic output.jpg <size>`, I was good to go, and I jammed it
-into a processing pipeline that my app already runs after receiving a new photo.
+be to convert everything to JPEG (at least for thumbnails). I looked at a few
+options, and I settled on `vips`. It says on [the web site](https://libvips.org)
+that "Compared to similar libraries, libvips runs quickly and uses little
+memory", and that's good enough for me. I've used ImageMagick in the past, and
+it's a bit of a jumble. This seemed like maybe a clean, modern replacement. Once
+I worked out that I could run `vips thumbnail input.heic output.jpg <size>` from
+the command line, I was good to go, and I added this step to the processing
+pipeline that my app already runs after receiving a new photo.
 
 ## The bug
 
-The day after pushing, and testing, a new build that had been specifically to
-fix the HEIC issue, I tried it again and noticed it was broken. I just fixed
-that, what the heck? I quickly narrowed the symptoms down this very strange
-behavior:
+The day after pushing, and testing, this fix for the HEIC issue, I was playing
+with the site and noticed it was broken again. I just fixed that, what the heck?
+I quickly narrowed the symptoms down this very strange behavior:
 
-- When the server is first started, it always successfully processes the first
+- When the server is first started, it always successfully processes the _first_
   photo uploaded.
-- JPEG files are always successfully processed.
-- Any HEIC file after the first upload always fails.
+- **JPEG** files are always successfully processed.
+- Any **HEIC** file _after the first upload_ always fails.
 - The error message from vips is:
   `VipsForeignLoad: "<filename>" is not a known file format`
 
-![screenshot](screenshot.jpg) Here, I uploaded the same file twice, so there
-should be two identical thumbnails. The second is broken.
+Here's what it looks like in the
+[demo project](https://github.com/masto/vips-issue):
 
-It got weirder. I am running this app in a Docker container, so I used the
-`docker exec` command to start a shell _in the same container_ as the server,
-and I ran the _exact same vips command_ on _exactly the same file_ that it said
-in the logs was not a known file format, and it worked fine. I tested it
-repeatedly, it was not intermittent. But the failure was 100% guaranteed to
-happen on the server every time. If I restarted it, I could process one HEIC
-file and then they would all fail again.
+![screenshot](screenshot.jpg)
+
+I uploaded the same file twice, so there should be two identical thumbnails, but
+the second is broken.
+
+As I went deeper into debugging, it got weirder. I am running this app in a
+Docker container, so I used the `docker exec` command to start a shell _in the
+same container_ as the server, and I ran the _exact same vips command_ on
+_exactly the same file_ that it said in the logs was not a known file format,
+and it worked fine. I tested it repeatedly, it was not intermittent. But the
+failure was 100% guaranteed to happen on the server every time. If I restarted
+it, I could process one HEIC file and then they would all fail again.
 
 ## The hair-pulling
 
@@ -117,13 +120,13 @@ openat(AT_FDCWD, "/target/lib/vips-modules-8.15", O_RDONLY|O_LARGEFILE|O_CLOEXEC
 ```
 
 Here we see an attempt to access `/target/lib/vips-modules-8.15`, which doesn't
-exist. Indeed, it doesn't exist in that container. And as we can now deduce,
-`vips-heif.so` must be a module that allows vips to read HEIC files. Trying to
-load that module from the wrong place would explain why it doesn't think the
-file is a valid format. But this just changes the mystery. How is it possible
-that executing the same exact command twice in a row, it would behave in a
-different and bizarre way? What is `/target`, where did it come from, and what's
-causing it to suddenly pop up on the second run of vips?
+exist. Indeed, there's no `/target` directory in the container. And as we can
+now deduce, `vips-heif.so` must be a module that allows vips to read HEIC files.
+Trying to load that module from the wrong place explains why it doesn't think
+the file is valid. But this just changes the mystery. How is it possible that
+executing the same exact command twice in a row, it would behave in a different
+and bizarre way? What is `/target`, where did it come from, and what's causing
+it to suddenly pop up on the second run of vips?
 
 I looked at the obvious things, yes. My code never mentions `/target`. You can
 look at it too,
@@ -190,8 +193,8 @@ no sense!
 I go
 [searching through the code](https://github.com/search?q=repo%3Alibvips%2Flibvips%20VIPSHOME&type=code)
 for every mention of VIPSHOME, but the only place it's mentioned outside of
-comments is in that one place, and it's in a getenv call, so it can't even be
-vips that's responsible for setting it. And even if it was, environment
+comments is in where we saw above, and it's in a `getenv` call, so it can't even
+be vips that's responsible for setting it. Even if it somehow was, environment
 variables don't carry over from a child process after it exits. This really
 threw me down a rabbit hole of questioning assumptions, and I even spent a bunch
 of time in the Node.js source code trying to make sure `spawn` wasn't doing
@@ -204,7 +207,7 @@ I discovered two things at approximately the same time. First, I need to correct
 something I said in the previous paragraph which wasn't entirely accurate. I
 said there are no other mentions of VIPSHOME, which _is_ correct, but that
 doesn't mean it never sets it. See that call to `vips_guess_prefix`? Let's take
-a look at that interesting little function:
+a look at this interesting little function:
 
 ```c
 const char *
@@ -235,28 +238,31 @@ vips_guess_prefix(const char *argv0, const char *env_name)
 }
 ```
 
-There, in the second to last line. `g_setenv(env_name, prefix, TRUE)`. How dare
-you. Yes, for some reason, this function doesn't just return the "guessed"
-prefix, it "as a side effect, sets the environment variable" (per a comment
-above this function). Digging a little deeper reveals that it sets it to a
-compiled-in value. This seems like a massive clue, but the missing link is still
-how it's possible for vips to modify the environment of a sibling.
+There, in the second to last line. `g_setenv(env_name, prefix, TRUE)`. You
+monster. Yes, this function doesn't just return the "guessed" prefix, it "as a
+side effect, sets the environment variable" (per a comment above this function).
+Digging a little deeper reveals that it sets it to a compiled-in value. This
+seems like a massive clue, but the missing link is still how it's possible for
+vips modifying its own environment to affect the future execution of a different
+process.
 
-Perhaps you've realized that I'm being deliberately misleading, because I wanted
-you to be stuck on the same faulty thought process I was stuck on. It's _not_
-possible to modify the environment of a sibling. Only parent environment
-variables are inherited. The way I thought computers work is indeed how they
-work. The problem is that sometimes it turns out that the impossible thing is
-actually what's happening, and when that has bit you a few times, you don't
-always want to rule it out. But in this case, nothing impossible is happening.
+Perhaps you've realized that I'm engaging in some slight misdirection, because I
+wanted you to be stuck on the same faulty thought process I was stuck on. It's
+_not_ possible to modify the environment of a future sibling process. Only
+parent environment variables are inherited. I hadn't forgotten how computers
+work. The problem is that sometimes it turns out the impossible thing is
+actually what's happening, so when that has bitten you a few times, you don't
+want to be too quick to discard those ideas. In this case, though, nothing
+impossible is happening.
 
 ## Ok already, the answer
 
-I was missing something in the logs, focusing on the bad runs. In the good,
-first run, VIPSHOME is not set, and that's all I paid attention to. Here's a
-closer look at what shows up in the logs of a "good" run when I turn on
-G_MESSAGES_DEBUG=VIPS, and the last clue I needed to jump up and do the "oh. no.
-oh geez. oh my god." thing when I actually noticed it.
+I was missing something in the logs by focusing on the bad runs. I glanced at
+the `env` output for a good run, noted that `VIPSHOME` was not set, and turned
+my attention elsewhere. That turned out to be a mistake. Let's take a closer
+look at what shows up in the logs of a "good" run when I turn on
+`G_MESSAGES_DEBUG=VIPS`. This snippet contains the final clue I needed to jump
+up and do the "oh. no. oh geez. oh my god." thing when I actually noticed it.
 
 ```text
 VIPS-INFO: 03:45:18.438: found /usr/lib/vips-modules-8.15
@@ -298,39 +304,40 @@ VIPS-INFO: 03:45:18.858: threadpool completed with 4 workers
 
 You have to know one more thing for this to come together. Remember when I said
 back at the beginning that I'm using that Next.js `<Image>` component? Remember
-how it does "optimization"? Well, uses a package called
+how it does "optimization"? Well, it uses a package called
 [sharp](https://sharp.pixelplumbing.com/) to do the heavy lifting. And just
-guess what library sharp uses under its hood? You guessed it, vips. And this is
-where Lieutenant Columbo gets to do his "one more thing" speech and lay it all
-out.
+guess what sharp uses under its hood? That's right: **_libvips_**. This the
+point in the show where Lieutenant Columbo turns around to deploy the "just one
+more thing" speech.
 
-**Here's how it happened:** the user uploaded a file. My code shelled out to
-`vips thumbnail` on it, and it worked as expected, exiting cleanly and leaving
-nothing behind. Then the upload handler triggered a re-render of the page, which
-displays a thumbnail of the uploaded file using the Next.js `<Image>` component.
-This rendering all happens in the Node.js-based Next.js web server. Because this
-component, through its use of `sharp` and sharp's use of `libvips`, runs in the
-web server process, it modifies the _web server's environment_ when it hits that
-`vips_guess_prefix` code. And I guess however it was built, it was built with
-`VIPS_PREFIX=/target`. So it was actually the _displaying of the thumbnail_
-which caused `VIPSHOME` to be set to `/target` in the Node process. So the _next
-time_ it spawned a vips process, vips couldn't find the library it needed to
-read HEIC files, and it failed.
+**Here's how it happened:** the user uploaded a file. My code shelled out to run
+`vips thumbnail` on it, which worked as expected. Then the upload handler
+triggered a re-render of the page, to show a thumbnail of the uploaded file
+using the Next.js `<Image>` component. This rendering all happens in the
+Node.js-based Next.js web server. Because this component, through its use of
+`sharp` and sharp's use of `libvips`, runs in the web server process, it
+modifies the _web server's environment_ when it hits that `vips_guess_prefix`
+code. Apparently it was built with `VIPS_PREFIX=/target`. So it was actually
+_displaying the thumbnail_ which caused `VIPSHOME` to be set to `/target` in the
+Node process. Then the _next time_ it spawned a vips command, it inherited that
+variable and caused vips to be unable to find the library it needed to read HEIC
+files, causing the ~~murd~~failure.
 
 I don't even know who to blame here. This is one of those things that only
 results from a bizarre interaction between many different things. Next.js's use
 (indirectly) of vips, plus the way it's compiled, plus a strange thing vips does
 with its environment, plus the way I'm using it, plus the way it's set up in
 this Docker image... oh yeah, I didn't even mention that. I couldn't reproduce
-it in my dev environment, because it turns out that in the Ubuntu version I'm
-using, vips is statically linked with libheif, so it doesn't have or need the
-external .so module. But in the Docker image, it's using Alpine and a
-dynamically linked libheif. So many variables that lined up to break this.
+it in my dev environment, because it turns out that I have a version of vips
+that's statically linked with libheif, so it doesn't rely on an external
+`vips-heif.so`. But the production Docker image uses Alpine and their packages
+[separate out](https://github.com/masto/vips-issue/blob/af48420af70a4b29c275b53427336634cd364618/Dockerfile#L41)
+vips-heif. So many variables that lined up to break this.
 
 ## The fix
 
-And to unbreak it, I added `delete process.env.VIPSHOME` before spawning vips.
-The end.
+To unbreak it, I added `delete process.env.VIPSHOME` before spawning vips. The
+end.
 
 I hope you enjoyed this adventure. I don't have any way to get feedback on my
 blog, but you can find me in various places through https://masto.me/ if you'd
