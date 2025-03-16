@@ -5,7 +5,7 @@
 const config = {
   title: "Chris Masto's Electric Webiola",
   tagline: "a blog about stuff",
-  url: "https://chatwithsysop.com",
+  url: "https://chrismasto.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -14,7 +14,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "masto", // Usually your GitHub org/user name.
-  projectName: "chatwithsysop.com", // Usually your repo name.
+  projectName: "chrismasto.com", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
